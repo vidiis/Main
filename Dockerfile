@@ -1,11 +1,9 @@
-# Usar una imagen base de Nginx
-FROM nginx:alpine
+FROM node:14-alpine
 
-# Copiar el contenido estático al directorio de Nginx
-COPY ./ /usr/share/nginx/html
+WORKDIR /app
 
-# Exponer el puerto 80
-EXPOSE 80
+COPY . .
 
-# Iniciar Nginx en el contenedor
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 443
+
+CMD ["node", "index.js"]
